@@ -1,32 +1,21 @@
 #!/usr/bin/python3
-"""Impementation of pascal triangle """
+'''A module for working with Pascal's triangle.
+'''
 
 
 def pascal_triangle(n):
-        """
-            Returns a list of lists of integers representing the Pascal’s triangle of n
-                """
+        '''Creates a list of lists of integers representing
+            the Pascal's triangle of a given integer.
+                '''
                     triangle = []
-
-                        # Check for valid input
-                            if n <= 0:
-                                        return triangle
-
-                                        # Create the base of the triangle
-                                            triangle.append([1])
-
-                                                # Generate the rest of the triangle
-                                                    for row in range(1, n):
-                                                                # Create an empty row
-                                                                        curr_row = []
-                                                                                # Append 1 to the beginning of the row
-                                                                                        curr_row.append(1)
-                                                                                                # Generate the values inside the row
-                                                                                                        for j in range(1, row):
-                                                                                                                        curr_row.append(triangle[row-1][j-1] + triangle[row-1][j])
-                                                                                                                                # Append 1 to the end of the row
-                                                                                                                                        curr_row.append(1)
-                                                                                                                                                # Append the row to the triangle
-                                                                                                                                                        triangle.append(curr_row)
-
-                                                                                                                                                            return triangle
+                        if type(n) is not int or n <= 0:
+                                    return triangle
+                                    for i in range(n):
+                                                line = []
+                                                        for j in range(i + 1):
+                                                                        if j == 0 or j == i:
+                                                                                            line.append(1)
+                                                                                                        elif i > 0 and j > 0:
+                                                                                                                            line.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
+                                                                                                                                    triangle.append(line)
+                                                                                                                                        return trianglee
